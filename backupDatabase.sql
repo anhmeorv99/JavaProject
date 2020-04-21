@@ -1,0 +1,5 @@
+CREATE TABLE MonHoc(MaMH VARCHAR(10) primary key,TenMH VARCHAR(30) not null,SoTC int not null)
+CREATE TABLE GiaoVien(MaGV VARCHAR(10) primary key,HoGV VARCHAR(20) not null,TenGV VARCHAR(10) not null,DonVi VARCHAR(50) not null)
+CREATE TABLE SinhVien(MaSV VARCHAR(10) primary key,HoSV VARCHAR(20) not null,TenSV VARCHAR(10) not null,ngaysinh date,noisinh varchar(50) not null)
+CREATE TABLE Lop(MaLop VARCHAR(10) primary key,MaMH VARCHAR(10) not null,NamHoc VARCHAR(10) not null,HocKy int not null,MaGV varchar(10) not null,FOREIGN key (MaMH) references MonHoc(MaMH),FOREIGN key (MaGV) references GiaoVien(MaGV))
+CREATE TABLE SinhVienLop(MaSV varchar(10) not null,MaLop varchar(10) not null,Diem double,primary key (MaSV,MaLop),FOREIGN key (MaSV) references SinhVien(MaSV),FOREIGN key (MaLop) references Lop(MaLop))
